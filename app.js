@@ -1,6 +1,8 @@
 let http = require("http");
 let express = require("express");
 let app = express();
+//let logger = require("morgan");
+let moment = require("moment");
 let router = express.Router();
 let bodyParser = require("body-parser");
 let host = "localhost";
@@ -9,10 +11,14 @@ let states = require("./states");
 let Database = require("./db");
 Database.connect();
 
+let logger = require("./logger");
+
 app.set("view engine", "ejs");
 app.use(bodyParser.json());
+//app.use(logger("dev"));
 
 app.get("/", (req, res) => {
+  //logger.log("invoking index page.")
   res.render("index");
 })
 
