@@ -1,7 +1,9 @@
 let http = require("http");
 let express = require("express");
 let app = express();
-//let logger = require("morgan");
+let logger = require("morgan");
+//let logger = require("./logger.js");
+//import {default as log} from "/logger";
 let moment = require("moment");
 let router = express.Router();
 let bodyParser = require("body-parser");
@@ -9,13 +11,13 @@ let host = "localhost";
 let port = 3000;
 let states = require("./states");
 let Database = require("./db");
+let startMessage = require("./startMessage");
 Database.connect();
 
-let logger = require("./logger");
 
 app.set("view engine", "ejs");
 app.use(bodyParser.json());
-//app.use(logger("dev"));
+app.use(logger("dev"));
 
 app.get("/", (req, res) => {
   //logger.log("invoking index page.")

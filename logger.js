@@ -4,8 +4,7 @@ let moment = require("moment");
 
 let instance = null;
 
-//export default
-class loggerService {
+export default class loggerService {
   get timeStamp(){return this._timeStamp}
 
   constructor() {
@@ -48,3 +47,5 @@ class loggerService {
     return instance;
   }
 }
+
+module.exports = loggerService;
